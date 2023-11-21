@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invoice_v2" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b57c0d4d-3c42-4df3-90cf-2fc40a330a70">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+    <style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+        <box>
+            <topPen lineWidth="0.5" lineColor="rgba(0, 0, 0, 0.003921569)"/>
+            <bottomPen lineWidth="0.5" lineColor="rgba(0, 0, 0, 0.003921569)"/>
+        </box>
+    </style>
+    <style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+        <box>
+            <topPen lineWidth="0.5" lineColor="rgba(0, 0, 0, 0.003921569)"/>
+            <bottomPen lineWidth="0.5" lineColor="rgba(0, 0, 0, 0.003921569)"/>
+        </box>
+    </style>
+    <style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+        <box>
+            <topPen lineWidth="0.5" lineColor="rgba(0, 0, 0, 0.003921569)"/>
+            <bottomPen lineWidth="0.5" lineColor="rgba(0, 0, 0, 0.003921569)"/>
+        </box>
+    </style>
+    <subDataset name="orderDetail" uuid="78706c4a-039a-4810-b657-1b5710af4423">
+        <queryString>
+            <![CDATA[]]>
+        </queryString>
+        <field name="productName" class="java.lang.String"/>
+        <field name="quantity" class="java.lang.Long"/>
+        <field name="price" class="java.lang.String"/>
+    </subDataset>
+    <parameter name="username" class="java.lang.String"/>
+    <parameter name="finalPrice" class="java.lang.String"/>
+    <parameter name="orderDetail" class="java.util.List"/>
+    <queryString>
+        <![CDATA[]]>
+    </queryString>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="98" splitType="Stretch">
+            <image>
+                <reportElement x="107" y="4" width="340" height="90" uuid="551c052b-e717-465e-953c-3b9043dafa2f"/>
+                <imageExpression><![CDATA["BinarFud.PNG"]]></imageExpression>
+            </image>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="35" splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="61" splitType="Stretch">
+            <textField>
+                <reportElement x="107" y="15" width="338" height="30" uuid="d2d7986e-961d-4f99-abe5-be13b087fbb8"/>
+                <textFieldExpression><![CDATA["Pesanan Atas Nama : " + $P{username}]]></textFieldExpression>
+            </textField>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="224" splitType="Stretch">
+            <componentElement>
+                <reportElement x="80" y="24" width="400" height="200" uuid="8a754841-8f49-48b8-8b92-20fc752b2970">
+                    <property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+                    <property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+                    <property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+                    <property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+                </reportElement>
+                <jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+                    <datasetRun subDataset="orderDetail" uuid="afdfcbed-5f51-4644-ad5f-13a47021d82b">
+                        <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{orderDetail})]]></dataSourceExpression>
+                    </datasetRun>
+                    <jr:column width="260" uuid="3c382b2a-8eca-4dbe-b91a-989daa069833">
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="260" height="30" uuid="85fc2da2-d3da-438f-93d7-43776053c2a0"/>
+                                <textFieldExpression><![CDATA[$F{productName}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="66" uuid="376fab94-8907-41c7-979d-3adf400a160c">
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="66" height="30" uuid="2e20804a-c2a2-4715-b4e5-b6c197e48e13"/>
+                                <textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="66" uuid="f471733e-6a62-468f-9001-90b8455586e4">
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="66" height="30" uuid="7f4c3b49-1fd1-43be-98c1-3efd052f010e"/>
+                                <textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                </jr:table>
+            </componentElement>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="33" splitType="Stretch">
+            <textField>
+                <reportElement x="400" y="6" width="124" height="20" uuid="5bed5aac-fa84-4d21-a884-341043c3e429"/>
+                <textFieldExpression><![CDATA["Total : " + $P{finalPrice}]]></textFieldExpression>
+            </textField>
+        </band>
+    </columnFooter>
+    <pageFooter>
+        <band height="54" splitType="Stretch">
+            <staticText>
+                <reportElement x="80" y="12" width="400" height="30" uuid="9a094360-a24e-409c-8e51-475c5cd56d9c"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <text><![CDATA[Selamat menikmati jangan lupa berikan review bagi kami di google]]></text>
+            </staticText>
+        </band>
+    </pageFooter>
+    <summary>
+        <band height="3" splitType="Stretch"/>
+    </summary>
+</jasperReport>
